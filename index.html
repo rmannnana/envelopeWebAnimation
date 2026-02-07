@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Envelope Web Animation</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            display: flex;
+        }
+
+        .div1,
+        .div2 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .div1 {
+            background-color: #3498db;
+            border-radius: 10px;
+        }
+
+        .img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50vw;
+            height: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="div1">
+            <img class="img" src="assets/envelope.webp" alt="enveloppe entière">
+        </div>
+        <div class="div2">
+            <img class="img img2" src="assets/fourreau.webp" alt="fourreau de l'enveloppe ouverte">
+            <img class="img img2" src="assets/colle.webp" alt="colle de l'enveloppe ouverte">
+        </div>
+    </div>
+</body>
+
+</html>
