@@ -1,62 +1,104 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Envelope Web Animation</title>
+    <title>Envelope Animation</title>
+
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             margin: 0;
-            padding: 0;
+            width: 100vw;
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            background-color: #f0f0f0;
+            background: #f0f0f0;
         }
 
-        .container {
-            position: relative;
-            width: 300px;
-            height: 300px;
-            display: flex;
-        }
-
-        .div1,
-        .div2 {
+        .envelope {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            width: min(60vw, 320px);
+            aspect-ratio: 1 / 1;
+            cursor: pointer;
         }
 
-        .div1 {
-            background-color: #3498db;
-            border-radius: 10px;
-        }
-
-        .img {
+        .envelope img {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 50vw;
-            height: auto;
+            width: 100%;
+            left: 0;
+            top: 0;
+        }
+
+        /* Z-INDEX (ORDRE DES COUCHES) */
+        .base {
+            z-index: 4;
+        }
+
+        .fourreau {
+            z-index: 3;
+        }
+
+        .letter {
+            z-index: 2;
+        }
+
+        .colle {
+            z-index: 1;
+        }
+
+        /* ÉTATS */
+        .open-part {
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .letter {
+            transform: scaleY(0.1);
+            transform-origin: bottom;
+            transition: transform 1.2s ease-out, opacity 1.2s ease-out;
+            opacity: 0;
+        }
+
+        /* HOVER */
+        .envelope:hover .open-part {
+            opacity: 1;
+        }
+
+        .envelope:hover .letter {
+            transform: scaleY(1);
+            opacity: 1;
+        }
+
+        .envelope:hover .base {
+            opacity: 0;
         }
     </style>
 </head>
 
 <body>
-    <div class="container">
-        <div class="div1">
-            <img class="img" src="assets/envelope.webp" alt="enveloppe entière">
-        </div>
-        <div class="div2">
-            <img class="img img2" src="assets/fourreau.webp" alt="fourreau de l'enveloppe ouverte">
-            <img class="img img2" src="assets/colle.webp" alt="colle de l'enveloppe ouverte">
-        </div>
+
+    <div class="envelope">
+
+        <!-- ENVELOPPE FERMÉE -->
+        <img class="base" src="assets/envelope.webp">
+
+        <!-- FOURREAU (DESSOUS) -->
+        <img class="open-part fourreau" src="assets/fourreau.webp">
+
+        <!-- FEUILLE -->
+        <img class="letter" src="assets/feuille.webp">
+
+        <!-- COLLE (DESSUS) -->
+        <img class="open-part colle" src="assets/colle.webp">
+
     </div>
+
 </body>
 
 </html>
